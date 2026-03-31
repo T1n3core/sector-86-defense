@@ -8,7 +8,8 @@ import io.github.T1n3core.game.Input;
 interface Controllable {
 	/**
 	 * Processes an input for an entity.
-	 * Should set state so that {@link Entity.update()} knows when to shoot or move
+	 * Should set state so that {@linkplain io.github.T1n3core.entities.Entity
+	 * Entity} knows when to shoot or move
 	 * for entities that are allowed to do so.
 	 */
 	void processInput(Input in);

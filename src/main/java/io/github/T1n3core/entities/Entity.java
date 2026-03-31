@@ -11,10 +11,10 @@ import io.github.T1n3core.game.GameState;
  * Only defines the rules each subclass must follow, use additional interfaces
  * for unique behaviour.
  */
-public sealed abstract class Entity permits Enemy, Player, Projectile {
+public abstract class Entity {
 	private final Team team;
-	private BufferedImage sprite;
-	private Rectangle hitbox;
+	private final BufferedImage sprite;
+	private final Rectangle hitbox;
 	private int x;
 	private int y;
 
@@ -76,7 +76,8 @@ public sealed abstract class Entity permits Enemy, Player, Projectile {
 	}
 
 	/**
-	 * Extension of {@code update()} that defines entity specific behaviour.
+	 * Extension of {@linkplain #update(GameState, Input) update} that defines
+	 * entity specific behaviour.
 	 *
 	 * @param state game state that includes data entities need to update
 	 */
@@ -125,5 +126,29 @@ public sealed abstract class Entity permits Enemy, Player, Projectile {
 	 */
 	public Team getTeam() {
 		return team;
+	}
+
+	/**
+	 * Setter for x.
+	 * Only ever to be called in
+	 * {@linkplain io.github.T1n3core.entities.Moves#move(GameState) move}, never by
+	 * itself.
+	 *
+	 * @param x the new x coordinate
+	 */
+	protected void setX(int x) {
+		this.x = x;
+	}
+
+	/**
+	 * Setter for y.
+	 * Only ever to be called in
+	 * {@linkplain io.github.T1n3core.entities.Moves#move(GameState) move}, never by
+	 * itself.
+	 *
+	 * @param y the new y coordinate
+	 */
+	protected void setY(int y) {
+		this.y = y;
 	}
 }

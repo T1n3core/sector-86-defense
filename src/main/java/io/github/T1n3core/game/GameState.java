@@ -2,7 +2,7 @@ package io.github.T1n3core.game;
 
 import java.util.ArrayList;
 import java.util.List;
-import io.github.T1n3core.game.Entity;
+import io.github.T1n3core.entities.Entity;
 
 /**
  * GameState
@@ -32,7 +32,7 @@ public class GameState {
 
 	public void update(Input input) {
 		for (Entity e : entities) {
-			e.update(this);
+			e.update(this, input);
 		}
 
 		for (Entity e : killQueue) {
