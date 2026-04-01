@@ -4,15 +4,11 @@ import io.github.T1n3core.game.GameState;
 import io.github.T1n3core.main.ResourceCache;
 
 /**
- * Enemy that fires projectiles.
+ * ShieldThrower
  */
-public class Shooter extends Entity implements Moves, Shoots {
-	public static final int FIRING_COOLDOWN = 20;
-	private int firingCooldown;
-
-	public Shooter(int x, int y) {
-		super(x, y, ResourceCache.SHOOTER, Team.ENEMY);
-		firingCooldown = FIRING_COOLDOWN;
+public class ShieldThrower extends Entity implements Moves, Shoots {
+	public ShieldThrower(int x, int y) {
+		super(x, y, ResourceCache.OBSTACLE_THROWER, Team.ENEMY);
 	}
 
 	@Override

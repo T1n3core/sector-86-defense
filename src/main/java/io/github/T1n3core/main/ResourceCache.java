@@ -12,11 +12,12 @@ public final class ResourceCache {
 	public static final BufferedImage BRAWLER;
 	public static final BufferedImage SHOOTER;
 	public static final BufferedImage OBSTACLE_THROWER;
+	public static final BufferedImage TANK;
 	public static final BufferedImage PLAYER_PROJECTILE;
 	public static final BufferedImage SHOOTER_PROJECTILE;
 
 	static {
-
+		// TODO Add the actual resources
 	} // images
 
 	/**
