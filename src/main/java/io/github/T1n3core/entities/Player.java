@@ -11,6 +11,11 @@ public class Player extends Entity implements Moves, Shoots, Controllable, Damag
 	public static final int MAX_HP = 5;
 	public static final int FIRING_COOLDOWN = 10;
 	private int health;
+	private int firingCooldown;
+	private boolean moveUp;
+	private boolean moveDown;
+	private boolean moveLeft;
+	private boolean moveRight;
 
 	/**
 	 * Constructs a Player.
@@ -21,6 +26,11 @@ public class Player extends Entity implements Moves, Shoots, Controllable, Damag
 	public Player(int x, int y) {
 		super(x, y, ResourceCache.PLAYER, Team.FRIENDLY);
 		health = MAX_HP;
+		firingCooldown = 0;
+		moveUp = false;
+		moveDown = false;
+		moveLeft = false;
+		moveRight = false;
 	}
 
 	@Override
