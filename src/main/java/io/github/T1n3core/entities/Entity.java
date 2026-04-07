@@ -72,6 +72,10 @@ public abstract class Entity {
 			s.shoot(state);
 		}
 
+		if (this instanceof Parries p) {
+			p.parry();
+		}
+
 		doUpdate(state);
 	}
 

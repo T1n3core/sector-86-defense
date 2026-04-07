@@ -2,6 +2,9 @@ package io.github.T1n3core.game;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
@@ -21,6 +24,10 @@ public class GamePanel extends JPanel implements Runnable {
 		// TODO Make this class
 		setFocusable(true);
 		SwingUtilities.invokeLater(this::requestFocusInWindow);
+
+		input = new Input();
+		setupKeyBindings();
+		setupMouseInput();
 	}
 
 	private void setupKeyBindings() {
@@ -44,14 +51,34 @@ public class GamePanel extends JPanel implements Runnable {
 		am.put(key + "_down", new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				input.set(keyCode, true);
+				input.setKey(keyCode, true);
 			}
 		});
 
 		am.put(key + "_up", new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				input.set(keyCode, false);
+				input.setKey(keyCode, false);
+			}
+		});
+	}
+
+	private void setupMouseInput() {
+		addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				input.setMousePosition(e.getX(), e.getY());
+			}
+		});
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				input.setMouse(e.getButton(), true);
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				input.setMouse(e.getButton(), false);
 			}
 		});
 	}
